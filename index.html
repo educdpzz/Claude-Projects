@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eduardo Cienfuegos de Paz</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-greeting">Hi! My name is</p>
+        <h1 class="hero-name" id="heroName" contenteditable="true">Eduardo Cienfuegos de Paz</h1>
+        <p class="hero-bio" id="heroBio" contenteditable="true">I'm an Industrial Engineering graduate from Northwestern University with a passion for product management, data science, and consulting. I love tackling complex problems, building strategies that drive impact, and learning about different cultures along the way.</p>
+        <div class="hero-actions">
+          <a href="https://www.linkedin.com/in/eduardo-cienfuegos/" class="btn btn-primary" id="linkedinBtn" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            LinkedIn
+          </a>
+          <button class="btn btn-ghost" id="editLinkedinBtn">Edit Link</button>
+          <a href="#" class="btn btn-accent" id="resumeLink" style="display:none;" target="_blank">View Resume</a>
+        </div>
+      </div>
+      <div class="hero-avatar">
+        <div class="avatar" id="avatarContainer">
+          <img id="avatarImg" src="" alt="Profile photo" style="display:none;">
+          <div class="avatar-placeholder" id="avatarPlaceholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" width="72" height="72">
+              <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+            </svg>
+          </div>
+          <label class="avatar-upload-overlay" for="avatarUpload">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+              <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
+              <circle cx="12" cy="13" r="4"/>
+            </svg>
+            <span>Upload Photo</span>
+          </label>
+          <input type="file" id="avatarUpload" accept="image/*" hidden>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section (Dark) -->
+  <section class="section section-dark" id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-content">
+        <ul class="about-list" id="aboutList">
+          <li contenteditable="true">I graduated from Northwestern University (McCormick School of Engineering) with a B.S. in Industrial Engineering, a minor in Data Science and Entrepreneurship, and a 3.81 GPA.</li>
+          <li contenteditable="true">I interned at Capital One as a Product Management & Analytics Intern, where I proposed a verification policy saving $4M/year while maintaining a near-zero fraud rate.</li>
+          <li contenteditable="true">I've also worked at KPMG as a CIO Advisory Intern and Embark Scholar, gaining experience across management consulting, cloud migration, and ESG strategy.</li>
+          <li contenteditable="true">I'm proficient in SQL, Python, Java, and MATLAB, and I'm a native speaker of English and Spanish with working proficiency in French, Italian, and Portuguese.</li>
+          <li contenteditable="true">Outside of work, I'm a vivid Barcelona and Real Oviedo fan, and I love travelling and learning about different cultures.</li>
+        </ul>
+        <button class="add-item-btn add-item-btn-dark" id="addAboutItem">+ Add point</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section class="section" id="experience">
+    <div class="container">
+      <div class="section-header-row">
+        <h2 class="section-title">Experience</h2>
+        <label class="upload-pill" for="resumeUploadExp">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+          </svg>
+          Upload Resume
+        </label>
+        <input type="file" id="resumeUploadExp" accept=".pdf,.doc,.docx,.txt" hidden>
+      </div>
+      <div class="entries" id="experienceList">
+        <div class="entry">
+          <div class="entry-left">
+            <img class="entry-logo" src="logos/capitalone.png" alt="Capital One logo">
+            <span class="entry-date" contenteditable="true">June 2024 — Aug 2024</span>
+          </div>
+          <div class="entry-right">
+            <h3 class="entry-title" contenteditable="true">Product Management & Analytics Intern</h3>
+            <p class="entry-org" contenteditable="true">Capital One Financial Corporation — McLean, VA</p>
+            <p class="entry-desc" contenteditable="true">Conducted comprehensive analysis to propose a new step-up verification policy reducing operation expenses by $4M/year while maintaining a near-zero fraud rate. Worked closely with the fraud product team to conduct shadow testing and identify improvements to the voice biometrics model. Received return offer.</p>
+          </div>
+        </div>
+        <div class="entry">
+          <div class="entry-left">
+            <img class="entry-logo" src="logos/KPMG.png" alt="KPMG logo">
+            <span class="entry-date" contenteditable="true">June 2023 — Aug 2023</span>
+          </div>
+          <div class="entry-right">
+            <h3 class="entry-title" contenteditable="true">CIO Advisory Intern (Management Consulting)</h3>
+            <p class="entry-org" contenteditable="true">KPMG — Chicago, IL</p>
+            <p class="entry-desc" contenteditable="true">Assisted a Fortune 500 automotive client in a cloud platform migration of 400 applications, reducing infrastructure expenses by 25%. Created an end-to-end migration plan providing a clear roadmap and decreasing client onboarding time. Conducted comprehensive risk analysis for the cloud migration.</p>
+          </div>
+        </div>
+        <div class="entry">
+          <div class="entry-left">
+            <img class="entry-logo" src="logos/KPMG.png" alt="KPMG logo">
+            <span class="entry-date" contenteditable="true">June 2022 — Aug 2022</span>
+          </div>
+          <div class="entry-right">
+            <h3 class="entry-title" contenteditable="true">Embark Scholar — IT/Engineering</h3>
+            <p class="entry-org" contenteditable="true">KPMG — Dallas, TX</p>
+            <p class="entry-desc" contenteditable="true">Completed a rotational internship across KPMG's Tax, Audit, and Advisory practices. Proposed an ESG plan to help the construction industry reduce emissions and become carbon neutral by 2050.</p>
+          </div>
+        </div>
+      </div>
+      <button class="add-item-btn" id="addExperience">+ Add Experience</button>
+    </div>
+  </section>
+
+  <!-- Education Section (Dark) -->
+  <section class="section section-dark" id="education">
+    <div class="container">
+      <div class="section-header-row">
+        <h2 class="section-title">Education</h2>
+        <label class="upload-pill upload-pill-dark" for="resumeUploadEdu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+          </svg>
+          Upload Resume
+        </label>
+        <input type="file" id="resumeUploadEdu" accept=".pdf,.doc,.docx,.txt" hidden>
+      </div>
+      <div class="entries" id="educationList">
+        <div class="entry">
+          <div class="entry-left">
+            <img class="entry-logo" src="logos/Northwestern.png" alt="Northwestern University logo">
+            <span class="entry-date" contenteditable="true">Sept 2021 — June 2025</span>
+          </div>
+          <div class="entry-right">
+            <h3 class="entry-title" contenteditable="true">B.S. Industrial Engineering</h3>
+            <p class="entry-org" contenteditable="true">Northwestern University, McCormick School of Engineering — Evanston, IL</p>
+            <p class="entry-desc" contenteditable="true">Minor in Data Science and Engineering, Entrepreneurship. GPA: 3.81/4.00. Dean's List multiple quarters. Relevant coursework: Financial Engineering, Stochastic Models, Data Management, Discrete Event Simulation, Statistical Learning, Operations Engineering, Optimization. Study Abroad in Florence (Fall 2023).</p>
+          </div>
+        </div>
+      </div>
+      <button class="add-item-btn add-item-btn-dark" id="addEducation">+ Add Education</button>
+    </div>
+  </section>
+
+  <!-- Contact Section (Dark) -->
+  <section class="section section-dark" id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact</h2>
+      <p class="contact-subtitle">Have a question or want to work together? Drop me a message.</p>
+      <div class="contact-form-wrapper">
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <label for="contactName">Name</label>
+            <input type="text" id="contactName" name="name" required placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label for="contactEmail">Email</label>
+            <input type="email" id="contactEmail" name="email" required placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label for="contactMessage">Message</label>
+            <textarea id="contactMessage" name="message" rows="5" required placeholder="Your message..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-submit">Send Message</button>
+        </form>
+        <div class="form-success" id="formSuccess" style="display:none;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="48" height="48">
+            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/>
+          </svg>
+          <h3>Message Sent!</h3>
+          <p>Thank you for reaching out. I'll get back to you soon.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <span id="currentYear"></span> All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
