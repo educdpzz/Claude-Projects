@@ -152,35 +152,6 @@ body {
   object-fit: cover;
 }
 
-.avatar-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--gray-400);
-}
-
-.avatar-upload-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  color: white;
-  font-size: 0.85rem;
-  font-weight: 500;
-  opacity: 0;
-  transition: opacity var(--transition);
-  cursor: pointer;
-}
-
-.avatar:hover .avatar-upload-overlay {
-  opacity: 1;
-}
 
 /* ===== Buttons ===== */
 .btn {

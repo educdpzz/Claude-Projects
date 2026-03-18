@@ -1,21 +1,3 @@
-// ===== Avatar Upload =====
-const avatarUpload = document.getElementById('avatarUpload');
-const avatarImg = document.getElementById('avatarImg');
-const avatarPlaceholder = document.getElementById('avatarPlaceholder');
-
-avatarUpload.addEventListener('change', (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = (ev) => {
-    avatarImg.src = ev.target.result;
-    avatarImg.style.display = 'block';
-    avatarPlaceholder.style.display = 'none';
-    saveData();
-  };
-  reader.readAsDataURL(file);
-});
-
 // ===== LinkedIn URL =====
 const linkedinBtn = document.getElementById('linkedinBtn');
 const editLinkedinBtn = document.getElementById('editLinkedinBtn');
@@ -127,8 +109,6 @@ function saveData() {
   const data = {
     name: document.getElementById('heroName').textContent,
     bio: document.getElementById('heroBio').textContent,
-    avatar: avatarImg.src,
-    avatarVisible: avatarImg.style.display !== 'none',
     linkedin: linkedinBtn.getAttribute('href'),
     aboutList: document.getElementById('aboutList').innerHTML,
     experience: document.getElementById('experienceList').innerHTML,
@@ -144,11 +124,6 @@ function loadData() {
     const data = JSON.parse(raw);
     if (data.name) document.getElementById('heroName').textContent = data.name;
     if (data.bio) document.getElementById('heroBio').textContent = data.bio;
-    if (data.avatarVisible && data.avatar) {
-      avatarImg.src = data.avatar;
-      avatarImg.style.display = 'block';
-      avatarPlaceholder.style.display = 'none';
-    }
     if (data.linkedin) linkedinBtn.setAttribute('href', data.linkedin);
     if (data.aboutList) document.getElementById('aboutList').innerHTML = data.aboutList;
     if (data.experience) document.getElementById('experienceList').innerHTML = data.experience;
