@@ -1,4 +1,6 @@
 setuptools
+numpy<2.0
+scikit-learn<1.4
 flask
 flask-cors
 mlconjug3
