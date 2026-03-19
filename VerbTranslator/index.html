@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idiom — Verb Translator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;700;900&family=Playfair+Display:wght@400;700;900&family=Spectral:wght@400;500;600;700&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background map layer -->
+    <div class="map-bg"></div>
+
+    <!-- ============ MAIN CONTENT ============ -->
+    <div class="page-wrapper">
+
+        <!-- Title Banner -->
+        <header class="title-banner">
+            <div class="banner">
+                <div class="banner-wing left"></div>
+                <div class="banner-center">
+                    <h1>IDIOM</h1>
+                </div>
+                <div class="banner-wing right"></div>
+            </div>
+        </header>
+
+        <!-- Language Selectors — prominent styled buttons -->
+        <div class="lang-row">
+            <div class="lang-group">
+                <span class="lang-label">TYPE IN:</span>
+                <div class="lang-selector">
+                    <select id="source-lang">
+                        <option value="en">ENGLISH</option>
+                        <option value="es">SPANISH</option>
+                        <option value="fr">FRENCH</option>
+                    </select>
+                </div>
+            </div>
+
+            <button id="swap-btn" title="Swap languages">&#8644;</button>
+
+            <div class="lang-group">
+                <span class="lang-label">TRANSLATE TO:</span>
+                <div class="lang-selector">
+                    <select id="target-lang">
+                        <option value="en">ENGLISH</option>
+                        <option value="es" selected>SPANISH</option>
+                        <option value="fr">FRENCH</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Spacer to push input to ~2/3 -->
+        <div class="spacer"></div>
+
+        <!-- Input Box with ornate frame -->
+        <div class="input-frame">
+            <svg class="corner-svg tl" viewBox="0 0 60 60"><path d="M5,55 C5,25 5,5 55,5" fill="none" stroke="#8a7a5a" stroke-width="2"/><path d="M8,50 C8,28 10,10 50,8" fill="none" stroke="#8a7a5a" stroke-width="1.2"/><circle cx="5" cy="55" r="3" fill="#8a7a5a" opacity="0.5"/><path d="M2,45 Q2,2 45,2" fill="none" stroke="#8a7a5a" stroke-width="0.8"/></svg>
+            <svg class="corner-svg tr" viewBox="0 0 60 60"><path d="M55,55 C55,25 55,5 5,5" fill="none" stroke="#8a7a5a" stroke-width="2"/><path d="M52,50 C52,28 50,10 10,8" fill="none" stroke="#8a7a5a" stroke-width="1.2"/><circle cx="55" cy="55" r="3" fill="#8a7a5a" opacity="0.5"/><path d="M58,45 Q58,2 15,2" fill="none" stroke="#8a7a5a" stroke-width="0.8"/></svg>
+            <svg class="corner-svg bl" viewBox="0 0 60 60"><path d="M5,5 C5,35 5,55 55,55" fill="none" stroke="#8a7a5a" stroke-width="2"/><path d="M8,10 C8,32 10,50 50,52" fill="none" stroke="#8a7a5a" stroke-width="1.2"/><circle cx="5" cy="5" r="3" fill="#8a7a5a" opacity="0.5"/><path d="M2,15 Q2,58 45,58" fill="none" stroke="#8a7a5a" stroke-width="0.8"/></svg>
+            <svg class="corner-svg br" viewBox="0 0 60 60"><path d="M55,5 C55,35 55,55 5,55" fill="none" stroke="#8a7a5a" stroke-width="2"/><path d="M52,10 C52,32 50,50 10,52" fill="none" stroke="#8a7a5a" stroke-width="1.2"/><circle cx="55" cy="5" r="3" fill="#8a7a5a" opacity="0.5"/><path d="M58,15 Q58,58 15,58" fill="none" stroke="#8a7a5a" stroke-width="0.8"/></svg>
+
+            <div class="input-inner">
+                <div class="input-wrapper">
+                    <input type="text" id="verb-input" placeholder="Type a verb..." autocomplete="off" spellcheck="false">
+                    <ul id="suggestions" class="suggestions hidden"></ul>
+                </div>
+                <button id="translate-btn">&#10148;</button>
+            </div>
+        </div>
+
+        <!-- Results Section (hidden initially) -->
+        <section id="results" class="results hidden">
+            <div class="result-scroll">
+                <div class="ornament-line">&#10043; &#10043; &#10043;</div>
+                <div class="translation-header">
+                    <span class="label-tag">TRANSLATION</span>
+                    <span id="result-verb" class="translated-verb"></span>
+                </div>
+
+                <!-- Example sentence -->
+                <div id="example-section" class="example-sentence">
+                    <h3>&#9758; EXAMPLE</h3>
+                    <p id="example-text" class="example-text"></p>
+                </div>
+
+                <div id="conjugation-section" class="conjugation">
+                    <h3>&#9758; CONJUGATION TABLE</h3>
+                    <div id="conjugation-tables" class="conjugation-tables"></div>
+                </div>
+                <div class="verb-image">
+                    <h3>&#9758; VISUAL</h3>
+                    <div class="image-frame">
+                        <img id="verb-img" src="" alt="Illustration of the verb">
+                    </div>
+                </div>
+                <div class="ornament-line">&#10043; &#10043; &#10043;</div>
+            </div>
+        </section>
+
+        <!-- Error -->
+        <section id="error" class="error-msg hidden">
+            <p id="error-text"></p>
+        </section>
+
+        <!-- Quote of the Day — stacked, no boxes -->
+        <div class="quote-section">
+            <div class="quote-header">
+                <div class="quote-line"></div>
+                <h2>QUOTE OF THE DAY</h2>
+                <div class="quote-line"></div>
+            </div>
+            <div class="quote-stack" id="quote-stack">
+                <div class="quote-item">
+                    <span class="quote-lang">English</span>
+                    <p class="quote-text" id="quote-en"></p>
+                </div>
+                <div class="quote-item">
+                    <span class="quote-lang">Spanish</span>
+                    <p class="quote-text" id="quote-es"></p>
+                </div>
+                <div class="quote-item">
+                    <span class="quote-lang">French</span>
+                    <p class="quote-text" id="quote-fr"></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Idiom &copy; 2026</p>
+    </footer>
+
+    <script src="app.js?v=4"></script>
+    <script>
+    // --- Quote of the Day (rotates every 24 hours) ---
+    const QUOTES = [
+        { en: '"Knowledge is power."', es: '"El conocimiento es poder."', fr: '"La connaissance est le pouvoir."' },
+        { en: '"To learn a language is to have one more window from which to look at the world."', es: '"Aprender un idioma es tener una ventana más desde la cual mirar el mundo."', fr: '"Apprendre une langue, c\'est avoir une fenêtre de plus par laquelle regarder le monde."' },
+        { en: '"The limits of my language mean the limits of my world."', es: '"Los límites de mi lenguaje significan los límites de mi mundo."', fr: '"Les limites de mon langage signifient les limites de mon monde."' },
+        { en: '"One language sets you in a corridor for life. Two languages open every door along the way."', es: '"Un idioma te pone en un pasillo de por vida. Dos idiomas te abren todas las puertas."', fr: '"Une langue vous place dans un couloir pour la vie. Deux langues ouvrent toutes les portes."' },
+        { en: '"Language is the road map of a culture."', es: '"El idioma es el mapa de una cultura."', fr: '"La langue est la carte routière d\'une culture."' },
+        { en: '"To have another language is to possess a second soul."', es: '"Tener otro idioma es poseer una segunda alma."', fr: '"Avoir une autre langue, c\'est posséder une deuxième âme."' },
+        { en: '"A different language is a different vision of life."', es: '"Un idioma diferente es una visión diferente de la vida."', fr: '"Une langue différente est une vision différente de la vie."' },
+        { en: '"Language is the dress of thought."', es: '"El lenguaje es el vestido del pensamiento."', fr: '"La langue est l\'habit de la pensée."' },
+        { en: '"Words are, of course, the most powerful drug used by mankind."', es: '"Las palabras son, por supuesto, la droga más poderosa utilizada por la humanidad."', fr: '"Les mots sont, bien sûr, la drogue la plus puissante utilisée par l\'humanité."' },
+        { en: '"He who knows no foreign languages knows nothing of his own."', es: '"Quien no conoce lenguas extranjeras no sabe nada de la suya."', fr: '"Celui qui ne connaît pas de langues étrangères ne sait rien de la sienne."' },
+    ];
+
+    function loadQuoteOfTheDay() {
+        const dayIndex = Math.floor(Date.now() / (1000 * 60 * 60 * 24)) % QUOTES.length;
+        const quote = QUOTES[dayIndex];
+        document.getElementById('quote-en').textContent = quote.en;
+        document.getElementById('quote-es').textContent = quote.es;
+        document.getElementById('quote-fr').textContent = quote.fr;
+    }
+    loadQuoteOfTheDay();
+    </script>
+</body>
+</html>
